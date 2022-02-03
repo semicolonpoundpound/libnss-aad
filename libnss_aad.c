@@ -22,6 +22,7 @@
 #define MIN_GID 1000
 #define MIN_UID 1000
 #define PASSWD_FILE "/etc/passwd"
+#define RESOURCE "https://login.microsoftonline.com/"
 #define RESOURCE_ID "00000002-0000-0000-c000-000000000000"
 #define SHADOW_FILE "/etc/shadow"
 #define SHELL "/bin/sh"
@@ -177,7 +178,7 @@ static json_t *get_oauth2_token(const char *client_id,
     resp.size = 0;
 
     /* https://login.microsoftonline.com/<domain>/oauth2/token */
-    sds endpoint = sdsnew("https://login.microsoftonline.com/");
+    sds endpoint = sdsnew(RESOURCE);
     endpoint = sdscat(endpoint, domain);
     endpoint = sdscat(endpoint, "/oauth2/token");
 
@@ -231,7 +232,7 @@ static int verify_user(json_t * auth_token, const char *domain,
     json_t *user_data;
     json_error_t error;
     sds auth_header = sdsnew("Authorization: Bearer ");
-    sds endpoint = sdsnew("https://graph.windows.net/");
+    sds endpoint = sdsnew(RESOURCE);
     struct response resp;
     struct curl_slist *headers = NULL;
     const char *user_field;
