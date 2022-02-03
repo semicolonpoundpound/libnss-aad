@@ -23,7 +23,7 @@
 #define MIN_UID 1000
 #define PASSWD_FILE "/etc/passwd"
 #define RESOURCE "https://login.microsoftonline.com/"
-#define RESOURCE_ID "00000002-0000-0000-c000-000000000000"
+#define RESOURCE_ID "00000003-0000-0000-c000-000000000000"
 #define SHADOW_FILE "/etc/shadow"
 #define SHELL "/bin/sh"
 #define USER_AGENT "libnss_aad/1.0"
